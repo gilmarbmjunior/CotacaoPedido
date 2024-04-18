@@ -133,11 +133,11 @@ namespace CotacaoPedido
         {
             gridItens.Columns["ValorU"].DefaultCellStyle.Format = "N2";
             gridItens.Columns["ValorT"].DefaultCellStyle.Format = "N2";
-            gridItens.Columns["Quantidade"].DefaultCellStyle.Format = "N2";
 
-            gridItens.Columns["ValorU"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gridItens.Columns["ValorT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
-            gridItens.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight;
+            gridItens.Columns["ValorU"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gridItens.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            gridItens.Columns["ValorT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
         }
+
     }
 }
