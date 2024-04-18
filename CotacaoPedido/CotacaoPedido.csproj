@@ -52,6 +52,7 @@
     <Compile Include="FormCadastro.Designer.cs">
       <DependentUpon>FormCadastro.cs</DependentUpon>
     </Compile>
+    <Compile Include="Util.cs" />
     <Compile Include="Item.cs" />
     <Compile Include="FormLista.cs">
       <SubType>Form</SubType>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
@@ -8,6 +9,7 @@ namespace CotacaoPedido
 {
     public partial class FormLista : Form
     {
+        private Util util = new Util();
         private List<Item> itens = new List<Item>();
         private decimal subtotal = 0.0m;
 
@@ -42,7 +44,7 @@ namespace CotacaoPedido
 
         private void carregarItensLista()
         {
-            itens.Add(new Item { Id = 1, Descricao = "placa mãe asus tuf", Valor = 10.50m, Quantidade = 5 });
+            itens.Add(new Item { Id = 1, Descricao = "placa mãe asus tuf", Valor = 10.00m, Quantidade = 5 });
             itens.Add(new Item { Id = 2, Descricao = "processador intel core i5-11400f", Valor = 7.25m, Quantidade = 3 });
             itens.Add(new Item { Id = 3, Descricao = "memoria ram 32gb", Valor = 15.75m, Quantidade = 2 });
             itens.Add(new Item { Id = 4, Descricao = "ssd 500gb", Valor = 80.0m, Quantidade = 7 });
@@ -52,11 +54,6 @@ namespace CotacaoPedido
             itens.Add(new Item { Id = 8, Descricao = "mouse sem fio", Valor = 30.0m, Quantidade = 6 });
             itens.Add(new Item { Id = 9, Descricao = "headset gamer", Valor = 80.0m, Quantidade = 8 });
             itens.Add(new Item { Id = 10, Descricao = "cadeira gamer", Valor = 200.0m, Quantidade = 3 });
-            itens.Add(new Item { Id = 11, Descricao = "processador amd ryzen 9 5900x", Valor = 450.0m, Quantidade = 2 });
-            itens.Add(new Item { Id = 12, Descricao = "placa mãe msi b550", Valor = 150.0m, Quantidade = 5 });
-            itens.Add(new Item { Id = 13, Descricao = "memória ram ddr4 16gb", Valor = 80.0m, Quantidade = 15 });
-            itens.Add(new Item { Id = 14, Descricao = "fonte de alimentação 750w", Valor = 100.0m, Quantidade = 4 });
-            itens.Add(new Item { Id = 15, Descricao = "gabinete gamer com rgb", Valor = 120.0m, Quantidade = 7 });
         }
 
         private void carregarItensGrid(List<Item> itens)
@@ -68,10 +65,13 @@ namespace CotacaoPedido
             {
                 decimal valorTotal = item.Quantidade * item.Valor;
                 subtotal += valorTotal;
-                gridItens.Rows.Add(item.Id, item.Descricao, item.Valor, item.Quantidade, valorTotal);
+                gridItens.Rows.Add(item.Id, item.Descricao, item.Valor.ToString("N2"), item.Quantidade, valorTotal.ToString("N2"));
             }
 
-            txtSubtotal.Text = subtotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
+            txtSubtotal.Text = subtotal.ToString("N2");
+
+            util.limparMoede(txtSubtotal);
+            util.formatarMoeda(txtSubtotal);
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -153,36 +153,54 @@ namespace CotacaoPedido
             }
         }
 
-        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        private void txtTotalCotacao_Click(object sender, EventArgs e)
         {
-            // Permite apenas números, separador decimal (vírgula) e teclas de controle (backspace, delete)
-            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
-            {
-                e.Handled = true; // Impede a entrada do caractere
-            }
-
-            // Permite apenas uma ocorrência do separador decimal
-            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
-            {
-                e.Handled = true; // Impede a entrada do caractere
-            }
+            util.setCursorEnd(txtTotalCotacao);
         }
 
-        private void txtValor_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        private void txtTotalCotacao_KeyDown(object sender, KeyEventArgs e)
         {
-            TextBox textBox = sender as TextBox;
-            if (textBox != null && !string.IsNullOrWhiteSpace(textBox.Text))
-            {
-                // Remove todos os caracteres não numéricos
-                string valorLimpo = textBox.Text.Replace(".", "").Replace(",", "").Replace("R$", "");
+            util.limparMoede(txtTotalCotacao);
+        }
 
-                // Converte o valor para decimal e formata com a máscara desejada
-                if (decimal.TryParse(valorLimpo, out decimal valor))
-                {
-                    // Formata o valor com a máscara desejada
-                    textBox.Text = valor.ToString("#,##0.00");
-                }
-            }
+        private void txtTotalCotacao_KeyUp(object sender, KeyEventArgs e)
+        {
+            util.limparMoede(txtTotalCotacao);
+        }
+
+        private void TxtTotalCotacao_Enter(object sender, EventArgs e)
+        {
+            util.limparMoede(txtTotalCotacao);
+        }
+
+        private void TxtTotalCotacao_Leave(object sender, EventArgs e)
+        {
+            util.formatarMoeda(txtTotalCotacao);
+        }
+
+        private void txtFrete_Click(object sender, EventArgs e)
+        {
+            util.setCursorEnd(txtFrete);
+        }
+
+        private void txtFrete_KeyDown(object sender, KeyEventArgs e)
+        {
+            util.limparMoede(txtFrete);
+        }
+
+        private void txtFrete_KeyUp(object sender, KeyEventArgs e)
+        {
+            util.limparMoede(txtFrete);
+        }
+
+        private void txtFrete_Enter(object sender, EventArgs e)
+        {
+            util.limparMoede(txtFrete);
+        }
+
+        private void txtFrete_Leave(object sender, EventArgs e)
+        {
+            util.formatarMoeda(txtFrete);
         }
     }
 }

@@ -42,7 +42,6 @@ namespace CotacaoPedido
             this.txtTotalImposto = new System.Windows.Forms.TextBox();
             this.txtTotalCotacao = new System.Windows.Forms.TextBox();
             this.lbTotalGeral = new System.Windows.Forms.Label();
-            this.mskFrete = new System.Windows.Forms.MaskedTextBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
             this.gbFiltro.SuspendLayout();
             this.SuspendLayout();
@@ -112,77 +111,80 @@ namespace CotacaoPedido
             // txtSubtotal
             // 
             this.txtSubtotal.Enabled = false;
-            this.txtSubtotal.Location = new System.Drawing.Point(635, 409);
+            this.txtSubtotal.Location = new System.Drawing.Point(61, 424);
             this.txtSubtotal.Name = "txtSubtotal";
             this.txtSubtotal.Size = new System.Drawing.Size(153, 20);
             this.txtSubtotal.TabIndex = 5;
+            this.txtSubtotal.Text = "R$ 0,00";
             this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(635, 435);
+            this.textBox2.Location = new System.Drawing.Point(467, 424);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(153, 20);
+            this.textBox2.Size = new System.Drawing.Size(112, 20);
             this.textBox2.TabIndex = 6;
+            this.textBox2.Text = "0,00 %";
             this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // textBox3
             // 
             this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(635, 461);
+            this.textBox3.Location = new System.Drawing.Point(635, 424);
             this.textBox3.Name = "textBox3";
             this.textBox3.Size = new System.Drawing.Size(153, 20);
             this.textBox3.TabIndex = 7;
+            this.textBox3.Text = "R$ 0,00";
             this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbSubtotal
             // 
             this.lbSubtotal.AutoSize = true;
-            this.lbSubtotal.Location = new System.Drawing.Point(538, 412);
+            this.lbSubtotal.Location = new System.Drawing.Point(9, 427);
             this.lbSubtotal.Name = "lbSubtotal";
-            this.lbSubtotal.Size = new System.Drawing.Size(91, 13);
+            this.lbSubtotal.Size = new System.Drawing.Size(46, 13);
             this.lbSubtotal.TabIndex = 8;
-            this.lbSubtotal.Text = "Subtotal Produtos";
+            this.lbSubtotal.Text = "Subtotal";
             // 
             // lbDesconto
             // 
             this.lbDesconto.AutoSize = true;
-            this.lbDesconto.Location = new System.Drawing.Point(520, 438);
+            this.lbDesconto.Location = new System.Drawing.Point(408, 427);
             this.lbDesconto.Name = "lbDesconto";
-            this.lbDesconto.Size = new System.Drawing.Size(109, 13);
+            this.lbDesconto.Size = new System.Drawing.Size(53, 13);
             this.lbDesconto.TabIndex = 9;
-            this.lbDesconto.Text = "Desconto Produtos %";
+            this.lbDesconto.Text = "Desconto";
             // 
             // lbTotal
             // 
             this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(553, 464);
+            this.lbTotal.Location = new System.Drawing.Point(598, 427);
             this.lbTotal.Name = "lbTotal";
-            this.lbTotal.Size = new System.Drawing.Size(76, 13);
+            this.lbTotal.Size = new System.Drawing.Size(31, 13);
             this.lbTotal.TabIndex = 10;
-            this.lbTotal.Text = "Total Produtos";
+            this.lbTotal.Text = "Total";
             // 
             // lbCotacao
             // 
             this.lbCotacao.AutoSize = true;
-            this.lbCotacao.Location = new System.Drawing.Point(10, 412);
+            this.lbCotacao.Location = new System.Drawing.Point(9, 455);
             this.lbCotacao.Name = "lbCotacao";
-            this.lbCotacao.Size = new System.Drawing.Size(84, 13);
+            this.lbCotacao.Size = new System.Drawing.Size(43, 13);
             this.lbCotacao.TabIndex = 11;
-            this.lbCotacao.Text = "Cotar preços em";
+            this.lbCotacao.Text = "Moeda ";
             // 
             // cbxMoeda
             // 
             this.cbxMoeda.FormattingEnabled = true;
-            this.cbxMoeda.Location = new System.Drawing.Point(100, 409);
+            this.cbxMoeda.Location = new System.Drawing.Point(58, 452);
             this.cbxMoeda.Name = "cbxMoeda";
-            this.cbxMoeda.Size = new System.Drawing.Size(138, 21);
+            this.cbxMoeda.Size = new System.Drawing.Size(284, 21);
             this.cbxMoeda.TabIndex = 12;
             // 
             // lbFrete
             // 
             this.lbFrete.AutoSize = true;
-            this.lbFrete.Location = new System.Drawing.Point(306, 412);
+            this.lbFrete.Location = new System.Drawing.Point(235, 427);
             this.lbFrete.Name = "lbFrete";
             this.lbFrete.Size = new System.Drawing.Size(31, 13);
             this.lbFrete.TabIndex = 13;
@@ -190,79 +192,84 @@ namespace CotacaoPedido
             // 
             // txtFrete
             // 
-            this.txtFrete.Location = new System.Drawing.Point(343, 409);
+            this.txtFrete.Location = new System.Drawing.Point(272, 424);
             this.txtFrete.Name = "txtFrete";
-            this.txtFrete.Size = new System.Drawing.Size(163, 20);
+            this.txtFrete.Size = new System.Drawing.Size(112, 20);
             this.txtFrete.TabIndex = 14;
+            this.txtFrete.Text = "R$ 0,00";
             this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtFrete.Click += new System.EventHandler(this.txtFrete_Click);
+            this.txtFrete.Enter += new System.EventHandler(this.txtFrete_Enter);
+            this.txtFrete.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtFrete_KeyDown);
+            this.txtFrete.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtFrete_KeyUp);
+            this.txtFrete.Leave += new System.EventHandler(this.txtFrete_Leave);
             // 
             // txtAliquota
             // 
             this.txtAliquota.Enabled = false;
-            this.txtAliquota.Location = new System.Drawing.Point(343, 435);
+            this.txtAliquota.Location = new System.Drawing.Point(415, 452);
             this.txtAliquota.Name = "txtAliquota";
-            this.txtAliquota.Size = new System.Drawing.Size(163, 20);
+            this.txtAliquota.Size = new System.Drawing.Size(153, 20);
             this.txtAliquota.TabIndex = 15;
-            this.txtAliquota.Text = "92,0";
+            this.txtAliquota.Text = "92,00 %";
             this.txtAliquota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbAliquota
             // 
             this.lbAliquota.AutoSize = true;
-            this.lbAliquota.Location = new System.Drawing.Point(281, 438);
+            this.lbAliquota.Location = new System.Drawing.Point(364, 455);
             this.lbAliquota.Name = "lbAliquota";
-            this.lbAliquota.Size = new System.Drawing.Size(56, 13);
+            this.lbAliquota.Size = new System.Drawing.Size(45, 13);
             this.lbAliquota.TabIndex = 16;
-            this.lbAliquota.Text = "Aliquota %";
+            this.lbAliquota.Text = "Aliquota";
             // 
             // lbTotalImposto
             // 
             this.lbTotalImposto.AutoSize = true;
-            this.lbTotalImposto.Location = new System.Drawing.Point(266, 468);
+            this.lbTotalImposto.Location = new System.Drawing.Point(585, 455);
             this.lbTotalImposto.Name = "lbTotalImposto";
-            this.lbTotalImposto.Size = new System.Drawing.Size(71, 13);
+            this.lbTotalImposto.Size = new System.Drawing.Size(44, 13);
             this.lbTotalImposto.TabIndex = 17;
-            this.lbTotalImposto.Text = "Total Imposto";
+            this.lbTotalImposto.Text = "Imposto";
             // 
             // txtTotalImposto
             // 
             this.txtTotalImposto.Enabled = false;
-            this.txtTotalImposto.Location = new System.Drawing.Point(343, 464);
+            this.txtTotalImposto.Location = new System.Drawing.Point(635, 452);
             this.txtTotalImposto.Name = "txtTotalImposto";
-            this.txtTotalImposto.Size = new System.Drawing.Size(163, 20);
+            this.txtTotalImposto.Size = new System.Drawing.Size(153, 20);
             this.txtTotalImposto.TabIndex = 18;
+            this.txtTotalImposto.Text = "R$ 0,00";
             this.txtTotalImposto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalCotacao
             // 
-            this.txtTotalCotacao.Location = new System.Drawing.Point(635, 517);
+            this.txtTotalCotacao.Location = new System.Drawing.Point(635, 497);
             this.txtTotalCotacao.Name = "txtTotalCotacao";
             this.txtTotalCotacao.Size = new System.Drawing.Size(153, 20);
             this.txtTotalCotacao.TabIndex = 19;
+            this.txtTotalCotacao.Text = "R$ 0,00";
             this.txtTotalCotacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotalCotacao.Click += new System.EventHandler(this.txtTotalCotacao_Click);
+            this.txtTotalCotacao.Enter += new System.EventHandler(this.TxtTotalCotacao_Enter);
+            this.txtTotalCotacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalCotacao_KeyDown);
+            this.txtTotalCotacao.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTotalCotacao_KeyUp);
+            this.txtTotalCotacao.Leave += new System.EventHandler(this.TxtTotalCotacao_Leave);
             // 
             // lbTotalGeral
             // 
             this.lbTotalGeral.AutoSize = true;
-            this.lbTotalGeral.Location = new System.Drawing.Point(555, 520);
+            this.lbTotalGeral.Location = new System.Drawing.Point(555, 500);
             this.lbTotalGeral.Name = "lbTotalGeral";
-            this.lbTotalGeral.Size = new System.Drawing.Size(74, 13);
+            this.lbTotalGeral.Size = new System.Drawing.Size(80, 13);
             this.lbTotalGeral.TabIndex = 20;
-            this.lbTotalGeral.Text = "Total Cotação";
-            // 
-            // mskFrete
-            // 
-            this.mskFrete.Location = new System.Drawing.Point(0, 0);
-            this.mskFrete.Name = "mskFrete";
-            this.mskFrete.Size = new System.Drawing.Size(100, 20);
-            this.mskFrete.TabIndex = 0;
+            this.lbTotalGeral.Text = "Total + Imposto";
             // 
             // FormLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 549);
-            this.Controls.Add(this.mskFrete);
+            this.ClientSize = new System.Drawing.Size(800, 535);
             this.Controls.Add(this.lbTotalGeral);
             this.Controls.Add(this.txtTotalCotacao);
             this.Controls.Add(this.txtTotalImposto);
@@ -320,6 +327,5 @@ namespace CotacaoPedido
         private System.Windows.Forms.TextBox txtTotalImposto;
         private System.Windows.Forms.TextBox txtTotalCotacao;
         private System.Windows.Forms.Label lbTotalGeral;
-        private System.Windows.Forms.MaskedTextBox mskFrete;
     }
 }
