@@ -70,8 +70,10 @@ namespace CotacaoPedido
 
             txtSubtotal.Text = subtotal.ToString("N2");
 
-            util.limparMoede(txtSubtotal);
-            util.formatarMoeda(txtSubtotal);
+            util.txtLimparFormatacao(txtSubtotal);
+            util.txtFormatarMoeda(txtSubtotal);
+
+            calcular();
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -153,29 +155,20 @@ namespace CotacaoPedido
             }
         }
 
-        private void txtTotalCotacao_Click(object sender, EventArgs e)
+        private void calcular()
         {
-            util.setCursorEnd(txtTotalCotacao);
-        }
+            double subtotal = util.normalizeDouble(txtSubtotal.Text);
+            double frete = util.normalizeDouble(txtFrete.Text);
+            double desconto = util.normalizeDouble(txtDesconto.Text);
+            double aliquota = util.normalizeDouble(txtAliquota.Text);
 
-        private void txtTotalCotacao_KeyDown(object sender, KeyEventArgs e)
-        {
-            util.limparMoede(txtTotalCotacao);
-        }
+            double total = (subtotal - (subtotal * (desconto / 100)) + frete);
+            double imposto = (total * (aliquota / 100));
+            double totalImposto = (total + imposto);
 
-        private void txtTotalCotacao_KeyUp(object sender, KeyEventArgs e)
-        {
-            util.limparMoede(txtTotalCotacao);
-        }
-
-        private void TxtTotalCotacao_Enter(object sender, EventArgs e)
-        {
-            util.limparMoede(txtTotalCotacao);
-        }
-
-        private void TxtTotalCotacao_Leave(object sender, EventArgs e)
-        {
-            util.formatarMoeda(txtTotalCotacao);
+            txtTotal.Text = total.ToString();
+            txtImposto.Text = imposto.ToString();
+            txtTotalImposto.Text = totalImposto.ToString();
         }
 
         private void txtFrete_Click(object sender, EventArgs e)
@@ -185,22 +178,50 @@ namespace CotacaoPedido
 
         private void txtFrete_KeyDown(object sender, KeyEventArgs e)
         {
-            util.limparMoede(txtFrete);
+            util.txtLimparFormatacao(txtFrete);
         }
 
         private void txtFrete_KeyUp(object sender, KeyEventArgs e)
         {
-            util.limparMoede(txtFrete);
+            util.txtLimparFormatacao(txtFrete);
         }
 
         private void txtFrete_Enter(object sender, EventArgs e)
         {
-            util.limparMoede(txtFrete);
+            util.txtLimparFormatacao(txtFrete);
         }
 
         private void txtFrete_Leave(object sender, EventArgs e)
         {
-            util.formatarMoeda(txtFrete);
+            util.txtFormatarMoeda(txtFrete);
+            calcular();
         }
+
+        private void txtDesconto_Click(object sender, EventArgs e)
+        {
+            util.setCursorEnd(txtDesconto);
+        }
+
+        private void txtDesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            util.txtLimparFormatacao(txtDesconto);
+        }
+
+        private void txtDesconto_KeyUp(object sender, KeyEventArgs e)
+        {
+            util.txtLimparFormatacao(txtDesconto);
+        }
+
+        private void txtDesconto_Enter(object sender, EventArgs e)
+        {
+            util.txtLimparFormatacao(txtDesconto);
+        }
+
+        private void txtDesconto_Leave(object sender, EventArgs e)
+        {
+            util.txtFormatarPorcentagem(txtDesconto);
+            calcular();
+        }
+
     }
 }

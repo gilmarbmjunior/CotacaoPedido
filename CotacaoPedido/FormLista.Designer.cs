@@ -25,10 +25,9 @@ namespace CotacaoPedido
             this.btnExcluir = new System.Windows.Forms.Button();
             this.gbFiltro = new System.Windows.Forms.GroupBox();
             this.txtFiltro = new System.Windows.Forms.TextBox();
-            this.lblFiltro = new System.Windows.Forms.Label();
             this.txtSubtotal = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.txtDesconto = new System.Windows.Forms.TextBox();
+            this.txtTotal = new System.Windows.Forms.TextBox();
             this.lbSubtotal = new System.Windows.Forms.Label();
             this.lbDesconto = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
@@ -39,11 +38,15 @@ namespace CotacaoPedido
             this.txtAliquota = new System.Windows.Forms.TextBox();
             this.lbAliquota = new System.Windows.Forms.Label();
             this.lbTotalImposto = new System.Windows.Forms.Label();
+            this.txtImposto = new System.Windows.Forms.TextBox();
             this.txtTotalImposto = new System.Windows.Forms.TextBox();
-            this.txtTotalCotacao = new System.Windows.Forms.TextBox();
             this.lbTotalGeral = new System.Windows.Forms.Label();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
             this.gbFiltro.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // gridItens
@@ -84,63 +87,58 @@ namespace CotacaoPedido
             // gbFiltro
             // 
             this.gbFiltro.Controls.Add(this.txtFiltro);
-            this.gbFiltro.Controls.Add(this.lblFiltro);
-            this.gbFiltro.Location = new System.Drawing.Point(13, 41);
+            this.gbFiltro.Location = new System.Drawing.Point(13, 45);
             this.gbFiltro.Name = "gbFiltro";
-            this.gbFiltro.Size = new System.Drawing.Size(775, 65);
+            this.gbFiltro.Size = new System.Drawing.Size(775, 53);
             this.gbFiltro.TabIndex = 4;
             this.gbFiltro.TabStop = false;
-            this.gbFiltro.Text = "Filtro";
+            this.gbFiltro.Text = "Filtrar p/ Descrição";
             // 
             // txtFiltro
             // 
-            this.txtFiltro.Location = new System.Drawing.Point(9, 32);
+            this.txtFiltro.Location = new System.Drawing.Point(6, 19);
             this.txtFiltro.Name = "txtFiltro";
-            this.txtFiltro.Size = new System.Drawing.Size(760, 20);
+            this.txtFiltro.Size = new System.Drawing.Size(763, 20);
             this.txtFiltro.TabIndex = 1;
-            // 
-            // lblFiltro
-            // 
-            this.lblFiltro.AutoSize = true;
-            this.lblFiltro.Location = new System.Drawing.Point(6, 16);
-            this.lblFiltro.Name = "lblFiltro";
-            this.lblFiltro.Size = new System.Drawing.Size(55, 13);
-            this.lblFiltro.TabIndex = 0;
-            this.lblFiltro.Text = "Descrição";
             // 
             // txtSubtotal
             // 
             this.txtSubtotal.Enabled = false;
-            this.txtSubtotal.Location = new System.Drawing.Point(61, 424);
+            this.txtSubtotal.Location = new System.Drawing.Point(58, 19);
             this.txtSubtotal.Name = "txtSubtotal";
-            this.txtSubtotal.Size = new System.Drawing.Size(153, 20);
+            this.txtSubtotal.Size = new System.Drawing.Size(142, 20);
             this.txtSubtotal.TabIndex = 5;
             this.txtSubtotal.Text = "R$ 0,00";
             this.txtSubtotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // textBox2
+            // txtDesconto
             // 
-            this.textBox2.Location = new System.Drawing.Point(467, 424);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(112, 20);
-            this.textBox2.TabIndex = 6;
-            this.textBox2.Text = "0,00 %";
-            this.textBox2.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDesconto.Location = new System.Drawing.Point(265, 19);
+            this.txtDesconto.Name = "txtDesconto";
+            this.txtDesconto.Size = new System.Drawing.Size(113, 20);
+            this.txtDesconto.TabIndex = 6;
+            this.txtDesconto.Text = "0,00 %";
+            this.txtDesconto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtDesconto.Click += new System.EventHandler(this.txtDesconto_Click);
+            this.txtDesconto.Enter += new System.EventHandler(this.txtDesconto_Enter);
+            this.txtDesconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDesconto_KeyDown);
+            this.txtDesconto.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtDesconto_KeyUp);
+            this.txtDesconto.Leave += new System.EventHandler(this.txtDesconto_Leave);
             // 
-            // textBox3
+            // txtTotal
             // 
-            this.textBox3.Enabled = false;
-            this.textBox3.Location = new System.Drawing.Point(635, 424);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(153, 20);
-            this.textBox3.TabIndex = 7;
-            this.textBox3.Text = "R$ 0,00";
-            this.textBox3.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtTotal.Enabled = false;
+            this.txtTotal.Location = new System.Drawing.Point(577, 19);
+            this.txtTotal.Name = "txtTotal";
+            this.txtTotal.Size = new System.Drawing.Size(193, 20);
+            this.txtTotal.TabIndex = 7;
+            this.txtTotal.Text = "R$ 0,00";
+            this.txtTotal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // lbSubtotal
             // 
             this.lbSubtotal.AutoSize = true;
-            this.lbSubtotal.Location = new System.Drawing.Point(9, 427);
+            this.lbSubtotal.Location = new System.Drawing.Point(6, 22);
             this.lbSubtotal.Name = "lbSubtotal";
             this.lbSubtotal.Size = new System.Drawing.Size(46, 13);
             this.lbSubtotal.TabIndex = 8;
@@ -149,7 +147,7 @@ namespace CotacaoPedido
             // lbDesconto
             // 
             this.lbDesconto.AutoSize = true;
-            this.lbDesconto.Location = new System.Drawing.Point(408, 427);
+            this.lbDesconto.Location = new System.Drawing.Point(206, 22);
             this.lbDesconto.Name = "lbDesconto";
             this.lbDesconto.Size = new System.Drawing.Size(53, 13);
             this.lbDesconto.TabIndex = 9;
@@ -158,7 +156,7 @@ namespace CotacaoPedido
             // lbTotal
             // 
             this.lbTotal.AutoSize = true;
-            this.lbTotal.Location = new System.Drawing.Point(598, 427);
+            this.lbTotal.Location = new System.Drawing.Point(540, 22);
             this.lbTotal.Name = "lbTotal";
             this.lbTotal.Size = new System.Drawing.Size(31, 13);
             this.lbTotal.TabIndex = 10;
@@ -167,7 +165,7 @@ namespace CotacaoPedido
             // lbCotacao
             // 
             this.lbCotacao.AutoSize = true;
-            this.lbCotacao.Location = new System.Drawing.Point(9, 455);
+            this.lbCotacao.Location = new System.Drawing.Point(9, 22);
             this.lbCotacao.Name = "lbCotacao";
             this.lbCotacao.Size = new System.Drawing.Size(43, 13);
             this.lbCotacao.TabIndex = 11;
@@ -176,15 +174,15 @@ namespace CotacaoPedido
             // cbxMoeda
             // 
             this.cbxMoeda.FormattingEnabled = true;
-            this.cbxMoeda.Location = new System.Drawing.Point(58, 452);
+            this.cbxMoeda.Location = new System.Drawing.Point(58, 19);
             this.cbxMoeda.Name = "cbxMoeda";
-            this.cbxMoeda.Size = new System.Drawing.Size(284, 21);
+            this.cbxMoeda.Size = new System.Drawing.Size(320, 21);
             this.cbxMoeda.TabIndex = 12;
             // 
             // lbFrete
             // 
             this.lbFrete.AutoSize = true;
-            this.lbFrete.Location = new System.Drawing.Point(235, 427);
+            this.lbFrete.Location = new System.Drawing.Point(384, 22);
             this.lbFrete.Name = "lbFrete";
             this.lbFrete.Size = new System.Drawing.Size(31, 13);
             this.lbFrete.TabIndex = 13;
@@ -192,9 +190,9 @@ namespace CotacaoPedido
             // 
             // txtFrete
             // 
-            this.txtFrete.Location = new System.Drawing.Point(272, 424);
+            this.txtFrete.Location = new System.Drawing.Point(421, 19);
             this.txtFrete.Name = "txtFrete";
-            this.txtFrete.Size = new System.Drawing.Size(112, 20);
+            this.txtFrete.Size = new System.Drawing.Size(113, 20);
             this.txtFrete.TabIndex = 14;
             this.txtFrete.Text = "R$ 0,00";
             this.txtFrete.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -207,9 +205,9 @@ namespace CotacaoPedido
             // txtAliquota
             // 
             this.txtAliquota.Enabled = false;
-            this.txtAliquota.Location = new System.Drawing.Point(415, 452);
+            this.txtAliquota.Location = new System.Drawing.Point(448, 19);
             this.txtAliquota.Name = "txtAliquota";
-            this.txtAliquota.Size = new System.Drawing.Size(153, 20);
+            this.txtAliquota.Size = new System.Drawing.Size(86, 20);
             this.txtAliquota.TabIndex = 15;
             this.txtAliquota.Text = "92,00 %";
             this.txtAliquota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -217,7 +215,7 @@ namespace CotacaoPedido
             // lbAliquota
             // 
             this.lbAliquota.AutoSize = true;
-            this.lbAliquota.Location = new System.Drawing.Point(364, 455);
+            this.lbAliquota.Location = new System.Drawing.Point(397, 22);
             this.lbAliquota.Name = "lbAliquota";
             this.lbAliquota.Size = new System.Drawing.Size(45, 13);
             this.lbAliquota.TabIndex = 16;
@@ -226,66 +224,82 @@ namespace CotacaoPedido
             // lbTotalImposto
             // 
             this.lbTotalImposto.AutoSize = true;
-            this.lbTotalImposto.Location = new System.Drawing.Point(585, 455);
+            this.lbTotalImposto.Location = new System.Drawing.Point(540, 22);
             this.lbTotalImposto.Name = "lbTotalImposto";
-            this.lbTotalImposto.Size = new System.Drawing.Size(44, 13);
+            this.lbTotalImposto.Size = new System.Drawing.Size(31, 13);
             this.lbTotalImposto.TabIndex = 17;
-            this.lbTotalImposto.Text = "Imposto";
+            this.lbTotalImposto.Text = "Total";
+            // 
+            // txtImposto
+            // 
+            this.txtImposto.Enabled = false;
+            this.txtImposto.Location = new System.Drawing.Point(577, 19);
+            this.txtImposto.Name = "txtImposto";
+            this.txtImposto.Size = new System.Drawing.Size(193, 20);
+            this.txtImposto.TabIndex = 18;
+            this.txtImposto.Text = "R$ 0,00";
+            this.txtImposto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // txtTotalImposto
             // 
             this.txtTotalImposto.Enabled = false;
-            this.txtTotalImposto.Location = new System.Drawing.Point(635, 452);
+            this.txtTotalImposto.Location = new System.Drawing.Point(589, 578);
             this.txtTotalImposto.Name = "txtTotalImposto";
-            this.txtTotalImposto.Size = new System.Drawing.Size(153, 20);
-            this.txtTotalImposto.TabIndex = 18;
+            this.txtTotalImposto.Size = new System.Drawing.Size(199, 20);
+            this.txtTotalImposto.TabIndex = 19;
             this.txtTotalImposto.Text = "R$ 0,00";
             this.txtTotalImposto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // txtTotalCotacao
-            // 
-            this.txtTotalCotacao.Location = new System.Drawing.Point(635, 497);
-            this.txtTotalCotacao.Name = "txtTotalCotacao";
-            this.txtTotalCotacao.Size = new System.Drawing.Size(153, 20);
-            this.txtTotalCotacao.TabIndex = 19;
-            this.txtTotalCotacao.Text = "R$ 0,00";
-            this.txtTotalCotacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            this.txtTotalCotacao.Click += new System.EventHandler(this.txtTotalCotacao_Click);
-            this.txtTotalCotacao.Enter += new System.EventHandler(this.TxtTotalCotacao_Enter);
-            this.txtTotalCotacao.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtTotalCotacao_KeyDown);
-            this.txtTotalCotacao.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtTotalCotacao_KeyUp);
-            this.txtTotalCotacao.Leave += new System.EventHandler(this.TxtTotalCotacao_Leave);
             // 
             // lbTotalGeral
             // 
             this.lbTotalGeral.AutoSize = true;
-            this.lbTotalGeral.Location = new System.Drawing.Point(555, 500);
+            this.lbTotalGeral.Location = new System.Drawing.Point(516, 581);
             this.lbTotalGeral.Name = "lbTotalGeral";
-            this.lbTotalGeral.Size = new System.Drawing.Size(80, 13);
+            this.lbTotalGeral.Size = new System.Drawing.Size(67, 13);
             this.lbTotalGeral.TabIndex = 20;
-            this.lbTotalGeral.Text = "Total + Imposto";
+            this.lbTotalGeral.Text = "Total Pedido";
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.lbSubtotal);
+            this.groupBox1.Controls.Add(this.txtSubtotal);
+            this.groupBox1.Controls.Add(this.lbDesconto);
+            this.groupBox1.Controls.Add(this.txtDesconto);
+            this.groupBox1.Controls.Add(this.lbFrete);
+            this.groupBox1.Controls.Add(this.txtFrete);
+            this.groupBox1.Controls.Add(this.txtTotal);
+            this.groupBox1.Controls.Add(this.lbTotal);
+            this.groupBox1.Location = new System.Drawing.Point(12, 429);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(776, 55);
+            this.groupBox1.TabIndex = 21;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Produtos";
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.cbxMoeda);
+            this.groupBox2.Controls.Add(this.lbCotacao);
+            this.groupBox2.Controls.Add(this.lbAliquota);
+            this.groupBox2.Controls.Add(this.txtAliquota);
+            this.groupBox2.Controls.Add(this.txtImposto);
+            this.groupBox2.Controls.Add(this.lbTotalImposto);
+            this.groupBox2.Location = new System.Drawing.Point(12, 499);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(776, 58);
+            this.groupBox2.TabIndex = 22;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Importação";
             // 
             // FormLista
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 535);
+            this.ClientSize = new System.Drawing.Size(800, 612);
+            this.Controls.Add(this.groupBox2);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lbTotalGeral);
-            this.Controls.Add(this.txtTotalCotacao);
             this.Controls.Add(this.txtTotalImposto);
-            this.Controls.Add(this.lbTotalImposto);
-            this.Controls.Add(this.lbAliquota);
-            this.Controls.Add(this.txtAliquota);
-            this.Controls.Add(this.txtFrete);
-            this.Controls.Add(this.lbFrete);
-            this.Controls.Add(this.cbxMoeda);
-            this.Controls.Add(this.lbCotacao);
-            this.Controls.Add(this.lbTotal);
-            this.Controls.Add(this.lbDesconto);
-            this.Controls.Add(this.lbSubtotal);
-            this.Controls.Add(this.textBox3);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.txtSubtotal);
             this.Controls.Add(this.gbFiltro);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnEditar);
@@ -297,6 +311,10 @@ namespace CotacaoPedido
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
             this.gbFiltro.ResumeLayout(false);
             this.gbFiltro.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -309,11 +327,10 @@ namespace CotacaoPedido
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.GroupBox gbFiltro;
         private System.Windows.Forms.TextBox txtFiltro;
-        private System.Windows.Forms.Label lblFiltro;
         private System.Windows.Forms.DataGridView gridItens;
         private System.Windows.Forms.TextBox txtSubtotal;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.TextBox txtDesconto;
+        private System.Windows.Forms.TextBox txtTotal;
         private System.Windows.Forms.Label lbSubtotal;
         private System.Windows.Forms.Label lbDesconto;
         private System.Windows.Forms.Label lbTotal;
@@ -324,8 +341,10 @@ namespace CotacaoPedido
         private System.Windows.Forms.TextBox txtAliquota;
         private System.Windows.Forms.Label lbAliquota;
         private System.Windows.Forms.Label lbTotalImposto;
+        private System.Windows.Forms.TextBox txtImposto;
         private System.Windows.Forms.TextBox txtTotalImposto;
-        private System.Windows.Forms.TextBox txtTotalCotacao;
         private System.Windows.Forms.Label lbTotalGeral;
+        private GroupBox groupBox1;
+        private GroupBox groupBox2;
     }
 }
