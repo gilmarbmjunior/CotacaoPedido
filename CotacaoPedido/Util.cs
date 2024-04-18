@@ -1,9 +1,6 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace CotacaoPedido
@@ -54,6 +51,19 @@ namespace CotacaoPedido
         public void setCursorEnd(TextBox textBox)
         {
             textBox.SelectionStart = textBox.TextLength;
+        }
+
+        public string gerarId(int tamanho)
+        {
+            Random random = new Random();
+            StringBuilder builder = new StringBuilder();
+
+            for (int i = 0; i < tamanho; i++)
+            {
+                builder.Append(random.Next(10));
+            }
+
+            return builder.ToString();
         }
 
     }

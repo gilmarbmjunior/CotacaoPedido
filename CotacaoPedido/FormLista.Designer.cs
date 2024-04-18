@@ -31,7 +31,7 @@ namespace CotacaoPedido
             this.lbSubtotal = new System.Windows.Forms.Label();
             this.lbDesconto = new System.Windows.Forms.Label();
             this.lbTotal = new System.Windows.Forms.Label();
-            this.lbCotacao = new System.Windows.Forms.Label();
+            this.lbMoeda = new System.Windows.Forms.Label();
             this.cbxMoeda = new System.Windows.Forms.ComboBox();
             this.lbFrete = new System.Windows.Forms.Label();
             this.txtFrete = new System.Windows.Forms.TextBox();
@@ -43,6 +43,8 @@ namespace CotacaoPedido
             this.lbTotalGeral = new System.Windows.Forms.Label();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtCotacao = new System.Windows.Forms.TextBox();
+            this.lbCotacao = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).BeginInit();
             this.gbFiltro.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -162,22 +164,24 @@ namespace CotacaoPedido
             this.lbTotal.TabIndex = 10;
             this.lbTotal.Text = "Total";
             // 
-            // lbCotacao
+            // lbMoeda
             // 
-            this.lbCotacao.AutoSize = true;
-            this.lbCotacao.Location = new System.Drawing.Point(9, 22);
-            this.lbCotacao.Name = "lbCotacao";
-            this.lbCotacao.Size = new System.Drawing.Size(43, 13);
-            this.lbCotacao.TabIndex = 11;
-            this.lbCotacao.Text = "Moeda ";
+            this.lbMoeda.AutoSize = true;
+            this.lbMoeda.Location = new System.Drawing.Point(9, 22);
+            this.lbMoeda.Name = "lbMoeda";
+            this.lbMoeda.Size = new System.Drawing.Size(43, 13);
+            this.lbMoeda.TabIndex = 11;
+            this.lbMoeda.Text = "Moeda ";
             // 
             // cbxMoeda
             // 
+            this.cbxMoeda.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbxMoeda.FormattingEnabled = true;
             this.cbxMoeda.Location = new System.Drawing.Point(58, 19);
             this.cbxMoeda.Name = "cbxMoeda";
-            this.cbxMoeda.Size = new System.Drawing.Size(320, 21);
+            this.cbxMoeda.Size = new System.Drawing.Size(164, 21);
             this.cbxMoeda.TabIndex = 12;
+            this.cbxMoeda.SelectedIndexChanged += new System.EventHandler(this.cbxMoeda_SelectedIndexChanged);
             // 
             // lbFrete
             // 
@@ -205,9 +209,9 @@ namespace CotacaoPedido
             // txtAliquota
             // 
             this.txtAliquota.Enabled = false;
-            this.txtAliquota.Location = new System.Drawing.Point(448, 19);
+            this.txtAliquota.Location = new System.Drawing.Point(435, 19);
             this.txtAliquota.Name = "txtAliquota";
-            this.txtAliquota.Size = new System.Drawing.Size(86, 20);
+            this.txtAliquota.Size = new System.Drawing.Size(99, 20);
             this.txtAliquota.TabIndex = 15;
             this.txtAliquota.Text = "92,00 %";
             this.txtAliquota.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
@@ -215,7 +219,7 @@ namespace CotacaoPedido
             // lbAliquota
             // 
             this.lbAliquota.AutoSize = true;
-            this.lbAliquota.Location = new System.Drawing.Point(397, 22);
+            this.lbAliquota.Location = new System.Drawing.Point(384, 22);
             this.lbAliquota.Name = "lbAliquota";
             this.lbAliquota.Size = new System.Drawing.Size(45, 13);
             this.lbAliquota.TabIndex = 16;
@@ -278,18 +282,38 @@ namespace CotacaoPedido
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.cbxMoeda);
             this.groupBox2.Controls.Add(this.lbCotacao);
+            this.groupBox2.Controls.Add(this.cbxMoeda);
+            this.groupBox2.Controls.Add(this.txtCotacao);
+            this.groupBox2.Controls.Add(this.lbMoeda);
             this.groupBox2.Controls.Add(this.lbAliquota);
             this.groupBox2.Controls.Add(this.txtAliquota);
             this.groupBox2.Controls.Add(this.txtImposto);
             this.groupBox2.Controls.Add(this.lbTotalImposto);
             this.groupBox2.Location = new System.Drawing.Point(12, 499);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(776, 58);
+            this.groupBox2.Size = new System.Drawing.Size(776, 54);
             this.groupBox2.TabIndex = 22;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Importação";
+            // 
+            // txtCotacao
+            // 
+            this.txtCotacao.Enabled = false;
+            this.txtCotacao.Location = new System.Drawing.Point(265, 19);
+            this.txtCotacao.Name = "txtCotacao";
+            this.txtCotacao.Size = new System.Drawing.Size(113, 20);
+            this.txtCotacao.TabIndex = 23;
+            this.txtCotacao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // lbCotacao
+            // 
+            this.lbCotacao.AutoSize = true;
+            this.lbCotacao.Location = new System.Drawing.Point(228, 22);
+            this.lbCotacao.Name = "lbCotacao";
+            this.lbCotacao.Size = new System.Drawing.Size(31, 13);
+            this.lbCotacao.TabIndex = 24;
+            this.lbCotacao.Text = "Valor";
             // 
             // FormLista
             // 
@@ -334,7 +358,7 @@ namespace CotacaoPedido
         private System.Windows.Forms.Label lbSubtotal;
         private System.Windows.Forms.Label lbDesconto;
         private System.Windows.Forms.Label lbTotal;
-        private System.Windows.Forms.Label lbCotacao;
+        private System.Windows.Forms.Label lbMoeda;
         private System.Windows.Forms.ComboBox cbxMoeda;
         private System.Windows.Forms.Label lbFrete;
         private System.Windows.Forms.TextBox txtFrete;
@@ -346,5 +370,7 @@ namespace CotacaoPedido
         private System.Windows.Forms.Label lbTotalGeral;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
+        private TextBox txtCotacao;
+        private Label lbCotacao;
     }
 }

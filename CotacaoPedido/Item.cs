@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace CotacaoPedido
+﻿namespace CotacaoPedido
 {
     public class Item
     {

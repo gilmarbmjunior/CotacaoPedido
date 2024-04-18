@@ -71,13 +71,14 @@ namespace CotacaoPedido
             // 
             this.txtQuantidade.Location = new System.Drawing.Point(12, 103);
             this.txtQuantidade.Name = "txtQuantidade";
-            this.txtQuantidade.Size = new System.Drawing.Size(211, 20);
+            this.txtQuantidade.Size = new System.Drawing.Size(149, 20);
             this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lbValor
             // 
             this.lbValor.AutoSize = true;
-            this.lbValor.Location = new System.Drawing.Point(226, 87);
+            this.lbValor.Location = new System.Drawing.Point(165, 87);
             this.lbValor.Name = "lbValor";
             this.lbValor.Size = new System.Drawing.Size(31, 13);
             this.lbValor.TabIndex = 4;
@@ -85,14 +86,20 @@ namespace CotacaoPedido
             // 
             // txtValor
             // 
-            this.txtValor.Location = new System.Drawing.Point(229, 103);
+            this.txtValor.Location = new System.Drawing.Point(167, 103);
             this.txtValor.Name = "txtValor";
-            this.txtValor.Size = new System.Drawing.Size(116, 20);
+            this.txtValor.Size = new System.Drawing.Size(178, 20);
             this.txtValor.TabIndex = 5;
+            this.txtValor.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.txtValor.Click += new System.EventHandler(this.txtValor_Click);
+            this.txtValor.Enter += new System.EventHandler(this.txtValor_Enter);
+            this.txtValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyDown);
+            this.txtValor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.txtValor_KeyUp);
+            this.txtValor.Leave += new System.EventHandler(this.txtValor_Leave);
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(189, 129);
+            this.btnSalvar.Location = new System.Drawing.Point(189, 147);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 6;
@@ -102,7 +109,7 @@ namespace CotacaoPedido
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(270, 129);
+            this.btnCancelar.Location = new System.Drawing.Point(270, 147);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 7;
@@ -131,7 +138,7 @@ namespace CotacaoPedido
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(357, 166);
+            this.ClientSize = new System.Drawing.Size(357, 182);
             this.Controls.Add(this.txtCodigo);
             this.Controls.Add(this.lbCodigo);
             this.Controls.Add(this.btnCancelar);
