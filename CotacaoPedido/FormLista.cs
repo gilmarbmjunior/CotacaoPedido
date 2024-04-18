@@ -1,15 +1,17 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Windows.Forms;
 
 namespace CotacaoPedido
 {
-    public partial class MainForm : Form
+    public partial class FormLista : Form
     {
         private List<Item> itens = new List<Item>();
+        private decimal subtotal = 0.0m;
 
-        public MainForm()
+        public FormLista()
         {
             InitializeComponent();
 
@@ -60,12 +62,16 @@ namespace CotacaoPedido
         private void carregarItensGrid(List<Item> itens)
         {
             gridItens.Rows.Clear();
+            subtotal = 0.0m;
 
             foreach (var item in itens)
             {
                 decimal valorTotal = item.Quantidade * item.Valor;
+                subtotal += valorTotal;
                 gridItens.Rows.Add(item.Id, item.Descricao, item.Valor, item.Quantidade, valorTotal);
             }
+
+            txtSubtotal.Text = subtotal.ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -75,7 +81,7 @@ namespace CotacaoPedido
 
         private void btnNovoClick(object sender, EventArgs e)
         {
-            CadastroForm addEditForm = new CadastroForm(null);
+            FormCadastro addEditForm = new FormCadastro(null);
 
             if (addEditForm.ShowDialog() == DialogResult.OK)
             {
@@ -94,7 +100,7 @@ namespace CotacaoPedido
 
                 if (itemSelecionado != null)
                 {
-                    CadastroForm addEditForm = new CadastroForm(itemSelecionado);
+                    FormCadastro addEditForm = new FormCadastro(itemSelecionado);
 
                     if (addEditForm.ShowDialog() == DialogResult.OK)
                     {
@@ -137,7 +143,46 @@ namespace CotacaoPedido
             gridItens.Columns["ValorU"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gridItens.Columns["Quantidade"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
             gridItens.Columns["ValorT"].DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter;
+
+            if (gridItens.Columns[e.ColumnIndex].Name == "ValorU" || gridItens.Columns[e.ColumnIndex].Name == "ValorT")
+            {
+                if (e.Value != null && e.Value != DBNull.Value && Decimal.TryParse(e.Value.ToString(), out decimal value))
+                {
+                    e.Value = value.ToString("C", CultureInfo.GetCultureInfo("pt-BR"));
+                }
+            }
         }
 
+        private void txtValor_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            // Permite apenas números, separador decimal (vírgula) e teclas de controle (backspace, delete)
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar) && (e.KeyChar != ','))
+            {
+                e.Handled = true; // Impede a entrada do caractere
+            }
+
+            // Permite apenas uma ocorrência do separador decimal
+            if ((e.KeyChar == ',') && ((sender as TextBox).Text.IndexOf(',') > -1))
+            {
+                e.Handled = true; // Impede a entrada do caractere
+            }
+        }
+
+        private void txtValor_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            if (textBox != null && !string.IsNullOrWhiteSpace(textBox.Text))
+            {
+                // Remove todos os caracteres não numéricos
+                string valorLimpo = textBox.Text.Replace(".", "").Replace(",", "").Replace("R$", "");
+
+                // Converte o valor para decimal e formata com a máscara desejada
+                if (decimal.TryParse(valorLimpo, out decimal valor))
+                {
+                    // Formata o valor com a máscara desejada
+                    textBox.Text = valor.ToString("#,##0.00");
+                }
+            }
+        }
     }
 }

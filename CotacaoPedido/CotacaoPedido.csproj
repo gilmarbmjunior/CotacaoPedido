@@ -46,26 +46,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CadastroForm.cs">
+    <Compile Include="FormCadastro.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CadastroForm.Designer.cs">
-      <DependentUpon>CadastroForm.cs</DependentUpon>
+    <Compile Include="FormCadastro.Designer.cs">
+      <DependentUpon>FormCadastro.cs</DependentUpon>
     </Compile>
     <Compile Include="Item.cs" />
-    <Compile Include="MainForm.cs">
+    <Compile Include="FormLista.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MainForm.Designer.cs">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <Compile Include="FormLista.Designer.cs">
+      <DependentUpon>FormLista.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="CadastroForm.resx">
-      <DependentUpon>CadastroForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormCadastro.resx">
+      <DependentUpon>FormCadastro.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="MainForm.resx">
-      <DependentUpon>MainForm.cs</DependentUpon>
+    <EmbeddedResource Include="FormLista.resx">
+      <DependentUpon>FormLista.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

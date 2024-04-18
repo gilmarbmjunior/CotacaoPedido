@@ -3,11 +3,11 @@ using System.Windows.Forms;
 
 namespace CotacaoPedido
 {
-    public partial class CadastroForm : Form
+    public partial class FormCadastro : Form
     {
         public Item item { get; set; }
 
-        public CadastroForm(Item item)
+        public FormCadastro(Item item)
         {
             InitializeComponent();
 

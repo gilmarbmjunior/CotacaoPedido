@@ -2,7 +2,7 @@
 
 namespace CotacaoPedido
 {
-    partial class CadastroForm
+    partial class FormCadastro
     {
         /// <summary>
         /// Required designer variable.
@@ -41,22 +41,6 @@ namespace CotacaoPedido
             this.lbCodigo = new System.Windows.Forms.Label();
             this.txtCodigo = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
-            // 
-            // lbCodigo
-            // 
-            this.lbCodigo.AutoSize = true;
-            this.lbCodigo.Location = new System.Drawing.Point(12, 9);
-            this.lbCodigo.Name = "lbCodigo";
-            this.lbCodigo.Size = new System.Drawing.Size(40, 13);
-            this.lbCodigo.TabIndex = 8;
-            this.lbCodigo.Text = "Código";
-            // 
-            // txtCodigo
-            // 
-            this.txtCodigo.Location = new System.Drawing.Point(12, 25);
-            this.txtCodigo.Name = "txtCodigo";
-            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
-            this.txtCodigo.TabIndex = 9;
             // 
             // lbDescricao
             // 
@@ -126,7 +110,24 @@ namespace CotacaoPedido
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
-            // CadastroForm
+            // lbCodigo
+            // 
+            this.lbCodigo.AutoSize = true;
+            this.lbCodigo.Location = new System.Drawing.Point(12, 9);
+            this.lbCodigo.Name = "lbCodigo";
+            this.lbCodigo.Size = new System.Drawing.Size(40, 13);
+            this.lbCodigo.TabIndex = 8;
+            this.lbCodigo.Text = "Código";
+            // 
+            // txtCodigo
+            // 
+            this.txtCodigo.Enabled = false;
+            this.txtCodigo.Location = new System.Drawing.Point(12, 25);
+            this.txtCodigo.Name = "txtCodigo";
+            this.txtCodigo.Size = new System.Drawing.Size(100, 20);
+            this.txtCodigo.TabIndex = 9;
+            // 
+            // FormCadastro
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -141,7 +142,7 @@ namespace CotacaoPedido
             this.Controls.Add(this.lbQuantidade);
             this.Controls.Add(this.txtDescricao);
             this.Controls.Add(this.lbDescricao);
-            this.Name = "CadastroForm";
+            this.Name = "FormCadastro";
             this.Text = "Cadastro Produto";
             this.Load += new System.EventHandler(this.AddEditForm_Load);
             this.ResumeLayout(false);
