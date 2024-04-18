@@ -39,7 +39,7 @@ namespace CotacaoPedido
 
             carregarItensLista();
 
-            InitializeAsync();
+            inicializarAsync();
 
             btnNovo.Click += btnNovoClick;
             btnEditar.Click += btnEditarClick;
@@ -48,12 +48,12 @@ namespace CotacaoPedido
             gridItens.CellFormatting += gridCellFormatting;
         }
 
-        private async Task InitializeAsync()
+        private async Task inicializarAsync()
         {
             await carregarCotacaoObject();
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
+        private void mainForm_Load(object sender, EventArgs e)
         {
             int screenWidth = Screen.PrimaryScreen.WorkingArea.Width;
             int screenHeight = Screen.PrimaryScreen.WorkingArea.Height;

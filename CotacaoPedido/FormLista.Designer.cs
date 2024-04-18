@@ -331,7 +331,7 @@ namespace CotacaoPedido
             this.Controls.Add(this.gridItens);
             this.Name = "FormLista";
             this.Text = "Cotação Produto";
-            this.Load += new System.EventHandler(this.MainForm_Load);
+            this.Load += new System.EventHandler(this.mainForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.gridItens)).EndInit();
             this.gbFiltro.ResumeLayout(false);
             this.gbFiltro.PerformLayout();

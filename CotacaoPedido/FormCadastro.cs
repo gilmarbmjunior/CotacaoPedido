@@ -15,7 +15,7 @@ namespace CotacaoPedido
 
             this.item = item;
 
-            PreencherControles();
+            preencherControles();
         }
 
         private void AddEditForm_Load(object sender, EventArgs e)
@@ -32,7 +32,7 @@ namespace CotacaoPedido
 
         }
 
-        private void PreencherControles()
+        private void preencherControles()
         {
             if (item != null)
             {
@@ -51,7 +51,7 @@ namespace CotacaoPedido
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (!ValidarCampos())
+            if (!validarCampos())
                 return;
 
             string id = txtCodigo.Text;
@@ -60,7 +60,7 @@ namespace CotacaoPedido
             if (string.IsNullOrEmpty(txtCodigo.Text))
             {
                 id = util.gerarId(6);
-            } 
+            }
 
             item = new Item
             {
@@ -74,8 +74,26 @@ namespace CotacaoPedido
             this.Close();
         }
 
-        private bool ValidarCampos()
+        private bool validarCampos()
         {
+            if (string.IsNullOrEmpty(txtDescricao.Text))
+            {
+                MessageBox.Show("CAMPO 'DESCRIÇÃO' OBRIGATÓRIO.", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtQuantidade.Text))
+            {
+                MessageBox.Show("CAMPO 'QUANTIDADE' OBRIGATÓRIO.", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false;
+            }
+
+            if (string.IsNullOrEmpty(txtValor.Text))
+            {
+                MessageBox.Show("CAMPO 'VALOR' OBRIGATÓRIO..", "Campo Vazio", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return false; 
+            }
+
             return true;
         }
 
